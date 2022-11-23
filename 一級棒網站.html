@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+<!-- reQuired meta  tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" , initial-scale=1.0, shrink-to-fit=no">
+<title>Bootstrap建立網站</title>
+<script type="text/javascript" src="地圖.js"></script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Bootstrap JS -->
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<style>
+	header {
+		background-color : #D3D4D4;
+		text-align: center;
+		height: 60px;
+	}
+	#navbar-area {
+		background-color : #00b33c;
+		border: 2px solid  #e0e0e0;
+		padding: 10px 0px 10px 0px;
+	}
+	#photo {
+		background-color : yellow;
+		height: 1360px;
+		text-align: center;
+	}
+	footer {
+		background-color : #D3D4D4;
+		height: 60px;
+		color: #D3D4D4;
+		text-align: center;
+	}
+	.box {
+		border: 2px solid #e0e0e0;
+		margin:10px 0px;
+		padding-bottom:10px;
+		background-color: lightblue;
+		height: 100px;
+	}
+	h3 {
+		margin-left:3%; margin-top:0.5%; font-size: 2em ; font-weight:bold;
+	}
+	#myMap {
+	    height: 85%; 
+	    width: 75%;
+    }
+	article {
+	position:absolute; top:15%;
+	right:0; width:98%; height:55%;
+	overflow: auto; background-color:#FFDAC2;
+	color:#47E7FF;
+	font-family:華康鋼筆體W2;
+	margin:10px;
+	border-radius:10px;
+-moz-border-radius:25px;
+}
+</style>
+</head>
+
+<body bgcolor="#D3D4D4">
+	<div class="container-fluid">
+		<div>	<!--先用bootstrap.row劃出一個橫向區域(一行)-->
+			<header class="col-lg-12">	<!--class=span數,使用12 columns所以制有一欄-->
+			<h3><marquee direction="right" height="30" scrollamount="8" behavior="alternate"><font size="5px" color="#535554">ㄅ棒的網站</font></marquee></h3>
+			</header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#故事">煜文的故事</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          推薦的音樂
+        </a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#1">北京的夜晚</a>
+          <a class="dropdown-item" href="#2">All_of_me</a>
+          <a class="dropdown-item" href="#3">U&I </a>
+		  <a class="dropdown-item" href="#4">小宇宙</a>
+		  <a class="dropdown-item" href="#5">狼</a>
+		  <a class="dropdown-item" href="#6">Stitches</a>
+		  <a class="dropdown-item" href="#7">Somebody</a>
+		  <a class="dropdown-item" href="#8">Love_yourself</a>
+		  <a class="dropdown-item" href="#9">Lost_in_Japan</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          推薦的影片
+        </a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#01">玩命關頭--特別行動</a>
+          <a class="dropdown-item" href="#02">被遺忘的天才</a>
+          <a class="dropdown-item" href="#03">調教咖啡廳</a>
+		  <a class="dropdown-item" href="#04">神人走路</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          喜歡去的地方
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#001">西門町</a>
+          <a class="dropdown-item" href="#002">ATT&nbsp;4&nbsp;FUN</a>
+          <a class="dropdown-item" href="#003">地下街</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+
+<center>
+<h2 id="故事">煜文的故事</h2>
+</center>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="photo_1.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="photo_2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="photo_3.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<br>
+
+<section>
+<center>
+<p>
+我出生於民國x89年，家中有4個成員，家父於人類
+文化有限公司擔任經理，母親是一位稱職的家庭主
+婦，妹妹圄前仍就讀國中，大家都和樂幸福。自幼
+父母以民主溝通之方式教育我，讓我在關懷、安康
+的環境下成長，培養我獨立自主、積極主動、負責
+之生活態度。爸爸是個樂觀開朗的好父親，常用『
+知足常樂』與我共勉之。媽媽常說『玉不琢、不成
+器、人不學、不知義』的格言來勉勵我。父母總以
+「嚴以律己」來作為我的模範，在耳濡目染下我已
+作好人生的規劃，我時常告誡自己要做個懂事孝順
+的孩子，十多年來的成長過程，可謂多彩多姿。 
+國小時常常參加各項比賽活動，像夏令營、科學營
+、母親卡製作比賽、書法、投稿，我都竭盡所能，
+取得各種榮耀，從xx就開始學心算的我，在偶然的
+機會下，我參加心算比賽得到了第x名，同時也拿
+到了xx證書，國中時本班獲選為xx班級，露營時更
+是搏得了精神總錦標，讓我榮耀至極。我的個性外
+向，隨和，善於表達自己的意見，易與他人打成一
+片，並建立良好人際關係。我想這要歸功於父母教
+導我為人處事的態度；生我，育我，養我，長我，
+悉心照顧，更為我開啟智慧之窗，導我為人之道，
+用心之深切，只願我怏安成長，能造福人群，昊天
+罔極，此德何報。師者，師也，個個抱持著作育英
+才的理念，熱誠傳授知識，擾我為人處事之理，陶
+冶我品性，使我由無知而豐知，辛勞教育我，無怨
+無悔，此情此愛，銘記吾心。 
+平常我喜歡各式的運動例如：籃球、羽球、桌球等
+來鍛鍊身體，閒暇時總愛拿本書細細品味，音樂與
+閱讀成了我生活的一部分。音樂可以放鬆自己，陶
+冶身心；閱讀可增添知識，使我思維更加周密以變
+化氣質，有時打開電腦上網找資料、吸收各方面的
+新知，也利用電腦做一些文書處理及一些統計剪接
+的軟體，來訓練自己這方面的才能，經由從事多元
+化的涉獵突破自我的能力，加強學習讓自己能面面
+俱到，好面對未來的種種挑戰，超越另一個自我。
+在課業方面，我較偏愛跟數學有關的科目，各科成
+績中表現最優異的總是數學，升高中也因為數學僅
+錯1題而錄取了恆毅高中，在課外活動方面我曾是從
+高的糾察隊。在高中期間參加了許多的課外活動，
+如：一年級的新詩朗誦比賽第3名、英文歌唱比賽第
+2名等。從開始到結束我們班始終是秩序、整潔優勝
+的保持人，在社團方面大眾傳播社更使我參觀過電
+台、報社、錄影節目如：綜藝大哥大、港督電台、
+聯合報社等…。 
+高中是人生的另一個新的起跑點，我的高中生活可
+說是多采多姿，同學眼中的我為人誠懇、做事細心
+負責、樂於接受挑戰及壓力。因為同學們的信任而
+擔任過護理股長的職位，目前則負責畢業紀念冊小
+組組長，感謝老師及所有的同學給予服務的機會，
+讓我多方涉獵接觸，廣拓知識領域。吸取了許多寶
+貴的經驗，曾經擔任過歷史小老師，對於班上事務
+熱心參與和同學相處融洽，在社團方面參加過大眾
+傳播社，學到一些特殊技能，照相方法及一些課外
+知識。學業成績雖無最傑出表現，但在強力自我要
+求下，始終保持中等以上的水準。 
+我的個性隨和，不喜愛發脾氣，高中時更因遇到了
+一位好老師－詹坤惠老師，他讓我體會到「付出」
+的快樂，並懂得開放心胸與人「分享」。自願參與
+活動、擔任幹部、培養了我的「責任心」與人相處
+的「彼此尊重」平時我總是表現出我的開朗，面臨
+現實時我總是能以嚴肅、冷靜的態度面對，時間飛
+逝即將步入人生另一旅程，一切都得自我掌控，重
+新踏上升學之途，實現我的抱負、更高遠的理想。 
+在高中聯考時，以理想的成績進入恆毅高中，經過
+3多來的努力，我相信我更有所成長茁壯，為了實現
+我的理想，我選擇了實踐大學資管系，對於貴校的
+師資、讀書風氣及設備深具信心，若能如願進入貴
+校系，我必定以虛心的態度學習，我相信我選擇的
+決定。
+</p>
+<a href="#top">Return Top</a>
+</center>
+</section>
+<hr>
+
+<center>
+<h2>推薦的音樂</h2>
+</center>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+	
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="pic1.jpg" class="d-block w-100" alt="..."> 
+    </div>
+    <div class="carousel-item">
+      <img src="pic2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="pic3.jpg" class="d-block w-100" alt="...">
+    </div>
+	<div class="carousel-item">
+      <img src="pic4.jpg" class="d-block w-100" alt="...">
+    </div>
+	<div class="carousel-item">
+      <img src="pic5.jpg" class="d-block w-100" alt="...">
+    </div>
+	<div class="carousel-item">
+      <img src="pic6.jpg" class="d-block w-100" alt="...">
+    </div>
+	<div class="carousel-item">
+      <img src="pic7.jpg" class="d-block w-100" alt="...">
+    </div>
+	<div class="carousel-item">
+      <img src="pic8.jpg" class="d-block w-100" alt="...">
+    </div>
+	<div class="carousel-item">
+      <img src="pic9.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<section>
+<center>
+<p>
+<h2 id="1">1.北京的夜晚
+</p>
+<p>
+<h2 id="2">2.All_of_me
+</p>
+<p>
+<h2 id="3">3.U&I
+</p>
+<p>
+<h2 id="4">4.小宇宙
+</p>
+<p>
+<h2 id="5">5.狼
+</p>
+<p>
+<h2 id="6">6.Stitches
+</p>
+<p>
+<h2 id="7">7.Somebody
+</p>
+<p>
+<h2 id="8">8.Love_yourself
+</p>
+<p>
+<h2 id="9">9.Lost_in_Japan
+</p>
+<a href="#top">Return Top</a>
+</center>
+</section>
+<center>
+<audio id="music_play1" src="北京的夜晚.mp3"></audio>
+<audio id="music_play2" src="All_of_me.mp3"></audio>
+<audio id="music_play3" src="U&I.mp3"></audio>
+<audio id="music_play4" src="小宇宙.mp3"></audio>
+<audio id="music_play5" src="狼.mp3"></audio>
+<audio id="music_play6" src="Stitches.mp3"></audio>
+<audio id="music_play7" src="Somebody.mp3"></audio>
+<audio id="music_play8" src="Loveyourself.mp3"></audio>
+<audio id="music_play9" src="Lost_in_Japan.mp3"></audio>
+<div>
+<!-- 點擊時 執行 play() -->
+<button class="btn01" type="button" onclick="start();">播放音樂></button>
+<!-- 點擊時 執行 pause() -->
+<button class="btn01" type="button" onclick="pause();">暫停播放></button>
+<!-- 點擊時 執行 next() -->
+<button class="btn01" type="button" onclick="next();">播放下一首></button>
+<!-- 點擊時 執行 previous() -->
+<button class="btn01" type="button" onclick="previous();">播放前一首></button>
+<!--音量大小-->
+<font size="6" face="華康鋼筆體W2" color="#C600E0">音量調整：</font><input id="volume" type="range" min="0" max="10" value="5">
+</center>
+<script>
+    play1=document.getElementById("music_play1");
+	play2=document.getElementById("music_play2");
+	play3=document.getElementById("music_play3");
+	play4=document.getElementById("music_play4");
+	play5=document.getElementById("music_play5");
+	play6=document.getElementById("music_play6");
+	play7=document.getElementById("music_play7");
+	play8=document.getElementById("music_play8");
+	play9=document.getElementById("music_play9");
+	
+	
+	musicList = [play1, play2, play3, play4, play5, play6, play7, play8, play9];
+	var index =0;
+	//點擊播放 暫停
+	function start() {
+		var play = musicList[index];
+		play.play();
+	}
+	function pause(){
+		var play = musicList[index];
+		play.pause();
+	}
+	//點擊播放下一首 或 前一首
+	function next(){
+		var play = musicList[index];
+		play.pause();
+		index += 1 ;
+		if(index >= musicList.length){
+			index = 0;
+		}
+		var play = musicList[index];
+		play.play();
+	}
+	function previous(){
+		var play = musicList[index];
+		play.pause();
+		index -= 1 ;
+		if(index < 0 ){
+			index = musicList.length - 1;
+		}
+		var play = musicList[index];
+		play.play();
+	}
+	// 調整音量
+    var playg = document.getElementById("music_play1");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     playg.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );	
+	var playe = document.getElementById("music_play2");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     playe.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );
+	var play = document.getElementById("music_play3");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     play.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );
+	var pla = document.getElementById("music_play4");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     pla.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );
+	var pl = document.getElementById("music_play5");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     pl.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );		
+    var p = document.getElementById("music_play5");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     p.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );				
+    var plz = document.getElementById("music_play5");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     plz.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );		
+    var plx = document.getElementById("music_play5");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     plx.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );	
+    var plb = document.getElementById("music_play5");
+    var volume = document.getElementById("volume");
+    volume.addEventListener("change",function()
+                                     {
+	                                     plb.volume = parseFloat(this.value /10);
+	                                 }, false
+						    );								
+</script>
+<hr>
+
+<section>
+<center>
+<h2>推薦的影片</h2>
+<p>
+<h2 id="01">1.玩命關頭--特別行動
+</p>
+<video class="item" id="video_play1" src="玩命特別行動.mp4" width="30%" height="300px"></video>
+<p>
+<h2 id="02">2.被遺忘的天才
+</p>
+<video class="item" id="video_play2" src="被遺忘的天才板車選手 .mp4" width="30%" height="300px"></video>
+<p>
+<h2 id="03">3.調教咖啡廳
+</p>
+<video class="item" id="video_play3" src="調教咖啡廳.mp4" width="30%" height="300px"></video>
+<p>
+<h2 id="04">4.神人走路
+</p>
+<video class="item" id="video_play4" src="搞笑走路.mp4" width="30%" height="300px"></video>
+</center>
+<br>
+<center>
+<div id="menubar">
+    <button class="btn01" onclick="startg()">Play</button>
+    <button class="btn01" onclick="pauseg()">Pause</button>
+    <button class="btn01" onclick="nextg()">Next video</button>
+    <button class="btn01" onclick="perviousg()">Previous video</button>
+    <button class="btn01" onclick="upVolume()">UpVolume</button>
+    <button class="btn01" onclick="lowerVolume()">LowerVolume</button>
+    <button class="btn01" onclick="upPlaySpeed()">UpPlaySpeed</button>
+    <button class="btn01" onclick="slowPlaySpeed()">SlowPlaySpeed</button>
+    <button class="btn01" onclick="fullscreen()">Fullscreen</button>
+</div>
+<script>
+	    play1=document.getElementById("video_play1");
+		play2=document.getElementById("video_play2");
+		play3=document.getElementById("video_play3");
+		play4=document.getElementById("video_play4");
+		videoList = [play1,play2,play3,play4];
+		var indexg = 0;
+
+		//點擊播放 暫停
+		function startg(){
+			var player = videoList[indexg];
+			player.play();
+			player.controls = true;
+		}
+		function pauseg(){
+			var player = videoList[indexg];
+			player.pause();
+		}
+		//點擊播放下一首 或 前一首
+		function nextg(){
+			var player = videoList[indexg];
+			player.controls =false;
+			player.pause();
+			indexg+=1;
+			if(indexg >= videoList.length){
+				indexg =0;
+			}
+			startg();
+		}
+		function perviousg(){
+			var player = videoList[indexg];
+			player.controls =false;
+			player.pause();
+			indexg-=1;
+			if(indexg < 0){
+				indexg = videoList.length-1;
+			}
+			startg();
+		}
+		// 調整音量大小
+		function lowerVolume(){
+			var player= videoList[indexg];
+			player.volume= player.volume-0.1;
+		}
+		function upVolume(){
+			var player= videoList[indexg];
+			player.volume= player.volume+0.1;
+		}
+		//調整播放速度
+		function upPlaySpeed(){
+			var player= videoList[indexg];
+			player.playbackRate = player.playbackRate+0.1;
+		}
+		function slowPlaySpeed(){
+			var player= videoList[indexg];
+			player.playbackRate = player.playbackRate-0.1;
+		}
+		//全螢幕播放
+		function fullscreen(){
+			var player= videoList[indexg];
+			player.requestFullscreen();
+		}
+</script>
+<a href="#top">Return Top</a>
+</center>
+</section>
+<hr>
+
+<section><center>
+<div>
+<h2>喜歡去的地方</h2>
+<div id="myMap"></div>
+<script>
+function initMap() 
+{
+   var myLocation = { lat: 23.8523012, lng: 120.9009427};
+   var thismap = new google.maps.Map(document.getElementById('myMap'),{  zoom: 15, center: myLocation });
+   var marker = new google.maps.Marker({  position: myLocation,map: thismap          });
+}
+</script>
+<script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGNN5TZKdn4wfWexv-uqhdck5nngn__gc&callback=initMap">
+</script>
+</div>
+<p>
+<h2 id="001">西門町
+</p>
+<p>
+<h2 id="002">ATT&nbsp;4&nbsp;FUN
+</p>
+<p>
+<h2 id="003">地下街
+</p>
+<a href="#top">Return Top</a>
+</center>
+<footer>
+</footer>
+</body>
+</html>
